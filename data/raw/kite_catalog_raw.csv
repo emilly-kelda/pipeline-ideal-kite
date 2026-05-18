@@ -1,0 +1,299 @@
+ kite_id,brand,model,year,size_m2,wind_range_min,wind_range_max,price
+160,ozone,Catalyst,2024,11,,26,€1468.32
+265,AIRUSH,Razor,2025,9,,30,€1070.88
+255,airush,Origin,2025,10m²,,28,2116
+10,Duo-tone,Neo SLS,2023,6 m,18,38,R$6948.8
+78,North,Neo,2025,14 m,7kn,22kn,1869
+235,SLINGSHOT,RPX,2025,5 sqm,20 knots,40 knots,1127
+94,Fone,Breeze,2025,11,19 km/h,48 km/h,€1912.68
+110,f-one,Revolt,2025,15m²,11 km/h,37 km/h,USD 1641
+6,DUOTONE,Neo SLS,2023,7,16 knots,35 knots,R$8256.75
+173,Ozone,Chrono,2025,10 m,11 knots,28 knots,€914.48
+98,F-One,Strike,2023,14 sqm,7,22,R$10377.75
+195,Naish,Boxer,2023,10 m,11,28,R$5989.3
+184,NAISH,Triad,2023,10,11kn,28kn,$1413
+155,ozone,Edge,2024,9.0,12kn,30kn,$1390
+58,NORTH,Orbit,2024,13m,8kn,23kn,R$7994.15
+61,north,Carve,2024,5 sqm,20kn,40kn,$1632
+148,Ozone,Enduro,2024,9 m,12,30,R$7862.85
+109,Fone,Revolt,2025,6,33 km/h,70 km/h,R$4671.25
+64,North Kiteboarding,Carve,2024,7 sqm,16 knots,35 knots,USD 1267
+141,CORE,Free,2024,9m²,,30,$2118
+156,Ozone,Edge,2024,13m,15 km/h,43 km/h,$2031
+105,F-One,Diablo,2023,6m,18kn,38kn,€1522.6
+247,AIRUSH,Ultra,2024,6,,38,1056
+47,Cabrinha,Nitro,2024,13.0,8kn,23kn,$2066
+43,Cabrinha,Nitro,2024,11 sqm,,26,€937.48
+169,OZONE,Reo,2024,13m²,,23,$1593
+280,Reedin,Hyper Model,2024,12m²,9 knots,25 knots,$1928
+117,Core,XR7,2024,5 sqm,,40,R$9595.0
+227,slingshot,Crisis,2025,12 sqm,9kn,25kn,€882.28
+278,Reedin,Expert Model,2024,12m,9 knots,25 knots,€1062.6
+18,Duotone,Juice,2025,13,8,23,USD 1910
+283,REEDIN,Hyper Model,2024,11m²,10kn,26kn,R$9428.35
+34,cabrinha,Drifter,2024,6m²,33 km/h,70 km/h,R$10504.0
+25,Duotone,Evo,2024,9 m,12,30,€1748.0
+46,cabrinha,Nitro,2024,15m²,6,20,$2118
+8,DUOTONE,Neo SLS,2023,10.0,,28,USD 1500
+114,CORE,XR7,2024,15 m,6 knots,20 knots,€1227.28
+194,NAISH,Boxer,2023,14m²,7 knots,22 knots,$1850
+112,F One,Revolt,2025,10m,11 knots,28 knots,$2113
+93,Fone,Breeze,2025,8.0,26 km/h,59 km/h,$1323
+76,NORTH,Reach,2025,7m²,,35,2160
+83,north,Neo,2025,8m,26 km/h,59 km/h,$1912
+119,Core Kiteboarding,XR7,2024,17m,9 km/h,33 km/h,€1244.76
+77,NORTH,Reach,2025,5m,20 knots,40 knots,R$4545.0
+130,Core,Nexus,2024,12.0,17 km/h,46 km/h,$1720
+197,NAISH,Slash,2024,8 sqm,,32,USD 1758
+210,Slingshot,Code,2023,15.0,,20,$1825
+210,Slingshot,Code,2023,15.0,,20,$1825
+187,Naish,Triad,2023,7.0,16kn,35kn,€1158.28
+178,Naish,Pivot,2025,11,,26,R$7519.45
+145,Core,Free,2024,15,6 knots,20 knots,USD 2136
+186,naish,Triad,2023,13 m,8,23,R$5903.45
+85,north,Neo,2025,6,18,38,R$9347.55
+248,airush,Ultra,2024,8 m,14kn,32kn,USD 1944
+282,Reedin,Hyper Model,2024,5,20kn,40kn,€1459.12
+74,NORTH,Reach,2025,11.0,19 km/h,48 km/h,USD 1568
+229,Slingshot,Crisis,2025,11m,19 km/h,48 km/h,$2059
+26,duotone,Evo,2024,11.0,10,26,$1390
+209,SLINGSHOT,Code,2023,8.0,14 knots,32 knots,$1818
+60,NORTH,Carve,2024,13 m,8,23,$1161
+7,Duo-tone,Neo SLS,2023,11,10,26,1998
+183,NAISH,Triad,2023,11m,10kn,26kn,1621
+171,ozone,Chrono,2025,13,8,23,$1365
+147,ozone,Enduro,2024,5m²,37 km/h,74 km/h,€999.12
+31,cabrinha,Switchblade,2025,7.0,16,35,USD 1592
+23,duotone,Evo,2024,10m,11 knots,28 knots,€2005.6
+254,airush,Diamond,2024,12m²,9 knots,25 knots,$1051
+57,NORTH,Orbit,2024,15,11 km/h,37 km/h,$1089
+212,Slingshot,Rally,2024,12 m,9,25,1808
+10,Duo-tone,Neo SLS,2023,6 m,18,38,R$6948.8
+127,Core,Section,2023,6,18 knots,38 knots,1159
+237,SLINGSHOT,RPX,2025,15,11 km/h,37 km/h,$1351
+268,Reedin,Super Model,2023,15 m,6kn,20kn,$1181
+201,NAISH,Hero,2024,8m,14,32,1831
+159,Ozone,Catalyst,2024,9 m,12kn,30kn,R$9797.0
+225,SLINGSHOT,Crisis,2025,8.0,,32,1778
+79,NORTH,Neo,2025,15,,20,USD 2196
+67,NORTH,Pulse,2023,11 sqm,10 knots,26 knots,1042
+267,reedin,Super Model,2023,6m,18 knots,38 knots,USD 1338
+281,Reedin,Hyper Model,2024,10 m,11kn,28kn,$1667
+174,Ozone,Chrono,2025,12m,17 km/h,46 km/h,1667
+20,Duo-tone,Juice,2025,9.0,22 km/h,56 km/h,€1552.96
+275,REEDIN,Expert Model,2024,10m²,,28,USD 1682
+80,north,Neo,2025,10m,11kn,28kn,$1535
+91,F-One,Breeze,2025,7m²,16kn,35kn,R$6120.6
+133,Core,Nexus,2024,9.0,,30,R$10706.0
+73,NORTH,Reach,2025,6 sqm,,38,R$7650.75
+16,duotone,Dice,2025,14 m,13 km/h,41 km/h,USD 1710
+11,duotone,Dice,2025,7.0,,35,USD 1046
+158,ozone,Catalyst,2024,13m,8kn,23kn,2028
+224,slingshot,Crisis,2025,13.0,8,23,USD 1652
+69,NORTH,Pulse,2023,12,9kn,25kn,$1434
+222,SLINGSHOT,Ghost,2024,15m²,6 knots,20 knots,$1741
+38,Cabrinha Kites,Moto,2023,11m,10 knots,26 knots,$1275
+17,duotone,Juice,2025,17m,5 knots,18 knots,1717
+120,CORE,XR7,2024,7.0,16 knots,35 knots,2091
+243,airush,Ultra,2024,17 sqm,,18,€1150.92
+269,REEDIN,Super Model,2023,11.0,,26,$1939
+68,NORTH,Pulse,2023,5,,40,$1718
+102,f-one,Diablo,2023,9m,12,30,$982
+70,NORTH,Pulse,2023,15 sqm,11 km/h,37 km/h,€1951.32
+32,Cabrinha,Switchblade,2025,9m,12,30,$914
+185,Naish,Triad,2023,9.0,22 km/h,56 km/h,€1409.44
+149,OZONE,Enduro,2024,15m²,6 knots,20 knots,1914
+223,slingshot,Ghost,2024,13 m,,23,$1489
+115,Core Kiteboarding,XR7,2024,11,10 knots,26 knots,2120
+19,Duo-tone,Juice,2025,15.0,6kn,20kn,$2185
+179,naish,Pivot,2025,8 sqm,,32,R$8115.35
+97,F-One,Strike,2023,13m²,,23,2174
+165,ozone,Reo,2024,17,5kn,18kn,USD 1690
+264,AIRUSH,Razor,2025,13 sqm,8 knots,23 knots,R$8160.8
+87,Fone,Bandit,2024,15 m,11 km/h,37 km/h,USD 1225
+246,Airush,Ultra,2024,9 m,12 knots,30 knots,USD 1535
+144,CORE,Free,2024,5 sqm,20,40,€1954.08
+205,naish,Hero,2024,9m,12,30,USD 2120
+125,CORE,Section,2023,14m,7kn,22kn,€1016.6
+140,Core,Riot,2023,13.0,15 km/h,43 km/h,USD 1305
+153,OZONE,Enduro,2024,11m²,10 knots,26 knots,R$9903.05
+204,Naish,Hero,2024,14 m,7kn,22kn,USD 2100
+56,North Kiteboarding,Orbit,2024,6 m,18 knots,38 knots,$1316
+199,NAISH,Slash,2024,7 m,16,35,USD 1472
+182,naish,Triad,2023,8m,26 km/h,59 km/h,2141
+180,naish,Pivot,2025,12m,17 km/h,46 km/h,R$7130.6
+138,Core Kiteboarding,Riot,2023,15 m,6 knots,20 knots,R$6938.7
+251,AIRUSH,Diamond,2024,7 m,16 knots,35 knots,USD 2179
+39,Cabrinha,Moto,2023,10,,28,1807
+126,Core,Section,2023,13 sqm,8 knots,23 knots,1267
+193,NAISH,Boxer,2023,11m,10 knots,26 knots,$2049
+264,AIRUSH,Razor,2025,13 sqm,8 knots,23 knots,R$8160.8
+203,Naish,Hero,2024,6.0,18kn,38kn,USD 2056
+113,f-one,Revolt,2025,7m²,30 km/h,65 km/h,1471
+166,ozone,Reo,2024,14,,22,R$9736.4
+118,Core,XR7,2024,12,17 km/h,46 km/h,€1752.6
+276,Reedin,Expert Model,2024,15 m,,20,$1308
+270,Reedin,Super Model,2023,13.0,,23,R$8024.45
+245,AIRUSH,Ultra,2024,11,19 km/h,48 km/h,R$10635.3
+176,naish,Pivot,2025,6 sqm,18kn,38kn,€1097.56
+3,Duotone,Rebel SLS,2023,8.0,,32,USD 1934
+116,Core,XR7,2024,10 sqm,11,28,R$6519.55
+177,NAISH,Pivot,2025,14,7 knots,22 knots,R$9297.05
+181,Naish,Triad,2023,6.0,18 knots,38 knots,$1710
+121,Core Kiteboarding,XR7,2024,6.0,33 km/h,70 km/h,€1475.68
+226,SLINGSHOT,Crisis,2025,7 sqm,,35,€876.76
+259,airush,Razor,2025,15 m,6 knots,20 knots,R$6186.25
+128,CORE,Nexus,2024,17 m,9 km/h,33 km/h,USD 1861
+75,North Kiteboarding,Reach,2025,8 sqm,26 km/h,59 km/h,USD 1292
+30,cabrinha,Switchblade,2025,13m,8,23,$1824
+84,north,Neo,2025,17m,9 km/h,33 km/h,1118
+241,airush,Lift,2024,17,5,18,R$8650.65
+108,F-One,Revolt,2025,8.0,14 knots,32 knots,€1634.84
+158,ozone,Catalyst,2024,13m,8kn,23kn,2028
+216,slingshot,Ghost,2024,14m²,13 km/h,41 km/h,$1594
+250,airush,Diamond,2024,14 sqm,,22,2054
+219,Slingshot,Ghost,2024,17m²,5,18,$1086
+214,SLINGSHOT,Rally,2024,15 sqm,,20,€2020.32
+66,North Kiteboarding,Pulse,2023,6 m,18kn,38kn,€872.16
+196,NAISH,Slash,2024,6 sqm,18 knots,38 knots,1829
+86,Fone,Bandit,2024,12.0,,25,R$10877.7
+211,slingshot,Code,2023,17 sqm,5 knots,18 knots,$1967
+13,Duotone,Dice,2025,15m,6 knots,20 knots,$1349
+36,Cabrinha Kites,Drifter,2024,8m²,26 km/h,59 km/h,$1625
+29,CABRINHA,Switchblade,2025,12m²,17 km/h,46 km/h,1538
+143,CORE,Free,2024,6m²,,38,$1924
+226,SLINGSHOT,Crisis,2025,7 sqm,,35,€876.76
+252,airush,Diamond,2024,6m²,18,38,€1656.0
+168,Ozone,Reo,2024,15m²,6kn,20kn,€1599.88
+52,CABRINHA,Contra,2025,10 m,11kn,28kn,USD 1040
+96,f-one,Strike,2023,17m²,9 km/h,33 km/h,USD 1588
+231,Slingshot,Crisis,2025,14 m,7 knots,22 knots,€1682.68
+261,Airush,Razor,2025,5 m,20 knots,40 knots,$2192
+42,cabrinha,Nitro,2024,8 m,14kn,32kn,USD 1896
+90,F One,Bandit,2024,10 m,11 knots,28 knots,1380
+230,Slingshot,Crisis,2025,5m²,,40,R$5489.35
+137,CORE,Riot,2023,11 m,,26,$1822
+27,Duotone,Evo,2024,14.0,13 km/h,41 km/h,USD 1075
+171,ozone,Chrono,2025,13,8,23,$1365
+142,Core Kiteboarding,Free,2024,7m²,16 knots,35 knots,€1710.28
+198,naish,Slash,2024,13.0,8,23,R$8832.45
+1,Duotone,Rebel SLS,2023,5.0,,40,R$5600.45
+267,reedin,Super Model,2023,6m,18 knots,38 knots,USD 1338
+273,REEDIN,Super Model,2023,7 m,30 km/h,65 km/h,R$6999.3
+101,F One,Diablo,2023,11m,10,26,$2004
+284,Reedin,Hyper Model,2024,14,7,22,€1987.2
+279,Reedin,Expert Model,2024,13m²,,23,$1820
+172,OZONE,Chrono,2025,11 m,10kn,26kn,$1808
+99,f-one,Strike,2023,8,26 km/h,59 km/h,€1082.84
+37,Cabrinha Kites,Moto,2023,5m,20kn,40kn,R$6524.6
+62,North Kiteboarding,Carve,2024,10.0,,28,USD 1624
+151,ozone,Enduro,2024,8.0,14,32,$1562
+234,Slingshot,RPX,2025,6 m,,38,R$6772.05
+232,slingshot,RPX,2025,14m²,7,22,R$5055.05
+240,AIRUSH,Lift,2024,7 m,,35,$1924
+12,Duo-tone,Dice,2025,10 m,20 km/h,52 km/h,1234
+47,Cabrinha,Nitro,2024,13.0,8kn,23kn,$2066
+266,AIRUSH,Razor,2025,10 m,20 km/h,52 km/h,USD 2044
+28,cabrinha,Switchblade,2025,15.0,11 km/h,37 km/h,USD 2142
+220,SLINGSHOT,Ghost,2024,8,14kn,32kn,1663
+5,Duotone,Neo SLS,2023,5m²,20,40,$1589
+123,Core,Section,2023,12 sqm,9kn,25kn,R$6458.95
+33,cabrinha,Drifter,2024,10 sqm,11kn,28kn,1894
+239,airush,Lift,2024,8.0,14kn,32kn,USD 1259
+163,OZONE,Catalyst,2024,6m²,,38,R$7979.0
+207,Slingshot,Code,2023,5 sqm,20,40,R$7287.15
+256,airush,Origin,2025,9.0,12,30,USD 2035
+139,CORE,Riot,2023,17 sqm,5kn,18kn,1045
+63,north,Carve,2024,17m²,5kn,18kn,$1384
+136,Core,Riot,2023,14,7,22,R$10251.5
+129,CORE,Nexus,2024,7,16 knots,35 knots,$1005
+76,NORTH,Reach,2025,7m²,,35,2160
+9,duotone,Neo SLS,2023,9 m,12,30,$1042
+71,north,Reach,2025,14 m,7,22,R$9054.65
+263,Airush,Razor,2025,12.0,9 knots,25 knots,USD 1207
+65,NORTH,Pulse,2023,7m,16 knots,35 knots,USD 1842
+45,Cabrinha,Nitro,2024,7m,16,35,$1222
+233,slingshot,RPX,2025,17m²,,18,€1742.48
+157,OZONE,Edge,2024,7m,16,35,R$9317.25
+41,CABRINHA,Nitro,2024,12m²,17 km/h,46 km/h,1443
+124,Core Kiteboarding,Section,2023,9.0,,30,€1348.72
+274,Reedin,Super Model,2023,12 m,,25,R$6963.95
+217,slingshot,Ghost,2024,11 sqm,19 km/h,48 km/h,€1416.8
+154,Ozone,Edge,2024,8,26 km/h,59 km/h,1797
+24,Duotone,Evo,2024,6.0,,38,€1131.6
+260,AIRUSH,Razor,2025,7.0,16 knots,35 knots,$1737
+111,Fone,Revolt,2025,14m²,7 knots,22 knots,R$9938.4
+82,north,Neo,2025,13 sqm,15 km/h,43 km/h,R$9251.6
+208,SLINGSHOT,Code,2023,10,11,28,R$9983.85
+213,Slingshot,Rally,2024,11 m,10,26,1203
+40,cabrinha,Moto,2023,6m,18,38,R$4696.5
+238,airush,Lift,2024,9 sqm,12,30,R$5782.25
+233,slingshot,RPX,2025,17m²,,18,€1742.48
+257,airush,Origin,2025,6.0,,38,USD 1558
+200,naish,Hero,2024,12m,17 km/h,46 km/h,$1024
+15,duotone,Dice,2025,9 sqm,12 knots,30 knots,R$10408.05
+48,CABRINHA,Contra,2025,15m²,6kn,20kn,USD 1543
+95,Fone,Strike,2023,11,19 km/h,48 km/h,R$7362.9
+262,airush,Razor,2025,8 m,26 km/h,59 km/h,2042
+228,Slingshot,Crisis,2025,15m,6 knots,20 knots,USD 1595
+272,Reedin,Super Model,2023,5m²,37 km/h,74 km/h,€1139.88
+202,naish,Hero,2024,10m,11,28,USD 943
+162,OZONE,Catalyst,2024,17m²,9 km/h,33 km/h,€1107.68
+44,Cabrinha Kites,Nitro,2024,5.0,20,40,1017
+218,SLINGSHOT,Ghost,2024,6m²,18kn,38kn,$1666
+146,ozone,Enduro,2024,14 sqm,,22,R$6418.55
+191,naish,Boxer,2023,15 sqm,,20,€1321.12
+221,slingshot,Ghost,2024,12 sqm,,25,$2050
+249,Airush,Ultra,2024,5 m,20,40,USD 1383
+4,duotone,Rebel SLS,2023,14m²,13 km/h,41 km/h,2016
+106,F-One,Diablo,2023,8 m,,32,1121
+54,CABRINHA,Contra,2025,6 sqm,,38,$916
+134,Core,Riot,2023,12 sqm,9,25,USD 2148
+2,Duotone,Rebel SLS,2023,9m,12,30,USD 965
+132,Core Kiteboarding,Nexus,2024,5m²,20,40,1408
+104,f-one,Diablo,2023,15m²,,20,€1043.28
+50,Cabrinha,Contra,2025,17,,18,1838
+164,OZONE,Reo,2024,8m²,14 knots,32 knots,R$4994.45
+81,North Kiteboarding,Neo,2025,12.0,9kn,25kn,$994
+206,Naish,Hero,2024,17,5 knots,18 knots,$2006
+35,Cabrinha,Drifter,2024,13 sqm,8,23,R$6509.45
+92,Fone,Breeze,2025,17m²,,18,$1577
+53,CABRINHA,Contra,2025,7.0,,35,1797
+242,AIRUSH,Lift,2024,13m²,8 knots,23 knots,1059
+14,DUOTONE,Dice,2025,8,26 km/h,59 km/h,USD 1546
+89,F-One,Bandit,2024,14 sqm,13 km/h,41 km/h,€1345.04
+167,ozone,Reo,2024,11,,26,USD 1104
+43,Cabrinha,Nitro,2024,11 sqm,,26,€937.48
+135,Core,Riot,2023,9m,12,30,USD 1441
+254,airush,Diamond,2024,12m²,9 knots,25 knots,$1051
+244,Airush,Ultra,2024,15m,11 km/h,37 km/h,R$5454.0
+55,north,Orbit,2024,9 sqm,,30,€1358.84
+51,CABRINHA,Contra,2025,13m,,23,€1229.12
+175,OZONE,Chrono,2025,14m,,22,USD 1743
+190,Naish,Boxer,2023,7m²,,35,€1325.72
+144,CORE,Free,2024,5 sqm,20,40,€1954.08
+188,Naish,Boxer,2023,13m,8,23,R$9387.95
+170,Ozone,Chrono,2025,15m,,20,€895.16
+59,North,Orbit,2024,7,30 km/h,65 km/h,$2029
+49,CABRINHA,Contra,2025,14,13 km/h,41 km/h,$1514
+236,SLINGSHOT,RPX,2025,7 m,,35,$1896
+253,Airush,Diamond,2024,15 m,,20,1462
+22,duotone,Evo,2024,15.0,6 knots,20 knots,$906
+161,OZONE,Catalyst,2024,12 sqm,,25,R$7630.55
+277,REEDIN,Expert Model,2024,14,7 knots,22 knots,1884
+192,naish,Boxer,2023,12,9kn,25kn,1121
+258,Airush,Origin,2025,14 m,13 km/h,41 km/h,$1026
+150,Ozone,Enduro,2024,7 m,30 km/h,65 km/h,€897.0
+131,Core Kiteboarding,Nexus,2024,6 m,18kn,38kn,$1210
+152,ozone,Enduro,2024,17,9 km/h,33 km/h,USD 2011
+100,f-one,Strike,2023,12m²,9 knots,25 knots,€1541.92
+88,Fone,Bandit,2024,13 sqm,,23,USD 1467
+215,SLINGSHOT,Rally,2024,6 m,,38,R$8484.0
+122,Core,Section,2023,17 sqm,5 knots,18 knots,1294
+169,OZONE,Reo,2024,13m²,,23,$1593
+21,Duotone,Juice,2025,11 sqm,10,26,2033
+189,Naish,Boxer,2023,9m²,12 knots,30 knots,$2041
+72,NORTH,Reach,2025,13 sqm,8 knots,23 knots,$1043
+107,F-One,Revolt,2025,11 m,10,26,2129
+271,Reedin,Super Model,2023,10 sqm,11kn,28kn,1215
+103,f-one,Diablo,2023,17m,5kn,18kn,R$10968.6

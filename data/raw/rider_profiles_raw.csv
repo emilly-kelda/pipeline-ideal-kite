@@ -1,0 +1,21 @@
+rider_id,name,weight,skill_level,preferred_style,home_location_id,budget,existing_kite_sizes
+RDR01,Ana Lima,79.1 kg,expert,surf,LOC04,4000,
+RDR02,Bruno Costa,210.4,Advanced,freestyle,LOC07,$2500,7m
+RDR03,Carla Mendes,204.0 lbs,Advanced,Freestyle,LOC01,€1380,"15, 14"
+RDR04,Diego Souza,204.8,Beginner,Freestyle,LOC09,1500,
+RDR05,Elena Faria,59.7 kg,intermediate,wave riding,LOC01,R$17675,"12m, 7m"
+RDR06,Felipe Rocha,84.9 kg,Intermediate,wave riding,LOC04,R$15150,5
+RDR07,Gabriela Nunes,75.5,inter,Freestyle,LOC06,$5000,
+RDR08,Henrique Alves,190.5,pro,freestyle,LOC99,€3680,
+RDR09,Isabel Martins,198.5 lbs,pro,Freeride,LOC09,$2000,14m
+RDR10,João Pires,188.3,expert,big_air,LOC03,R$12625,11m
+RDR11,Karina Silva,60.2 kg,Intermediate,freeride,LOC01,R$12625,
+RDR12,Lucas Ferreira,144.2,advanced,tricks,LOC07,€3220,10m
+RDR13,Mariana Gomes,125.5,novice,jumping,LOC09,USD 2500,10m+6
+RDR14,Nicolas Teixeira,62.7,pro,Freeride,LOC07,$5000,
+RDR15,Olivia Santos,62.0 kg,pro,wave,LOC02,USD 1500,
+RDR16,Pedro Dias,83.1 kg,advanced,big_air,LOC05,USD 3500,"6m, 8m"
+RDR17,Rafaela Cruz,166.5 lbs,advanced,free ride,LOC01,€4600,
+RDR18,Samuel Barros,204.8,Beginner,tricks,LOC10,€3220,14
+RDR19,Thais Oliveira,148.6 lbs,advanced,freeride,LOC10,USD 3000,"11m, 7"
+RDR20,Victor Cardoso,75.9 kg,adv,wave,LOC08,5000,
