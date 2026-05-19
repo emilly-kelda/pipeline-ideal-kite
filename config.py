@@ -39,3 +39,21 @@ BEAUFORT_TO_KNOTS = {
 # ── Quiver optimizer ─────────────────────────────────────────────────────────
 COVERAGE_WEIGHT   = 0.6   # how much wind coverage matters vs price
 PRICE_WEIGHT      = 0.4   # how much price/value matters
+
+# ── Safe wind directions per location ────────────────────────────────────────
+# Each location has a list of (min_deg, max_deg) tuples defining safe ranges.
+# Wind coming from outside these ranges is offshore or dangerous.
+# Based on real kitespot research — see project README for sources.
+
+SAFE_DIRECTIONS = {
+    "LOC01": [(90,  180)],          # Cumbuco — SE trade winds
+    "LOC02": [(90,  180)],          # Jericoacoara — SE trade winds
+    "LOC03": [(225, 315)],          # Tarifa — Poniente (W/SW) safe for all levels
+    "LOC04": [(45,  135)],          # Maui — NE/E trade winds
+    "LOC05": [(90,  180)],          # Cape Town — SE Cape Doctor
+    "LOC06": [(0,   90)],           # Cabarete — NE trade winds
+    "LOC07": [(0,   90)],           # Dakhla — N/NE trade winds
+    "LOC08": [(90,  180)],          # Guajiru — SE trade winds
+    "LOC09": [(0,   45), (135, 225)], # Lake Garda — N morning + S afternoon thermals
+    "LOC10": [(0,   90), (180, 270)], # Boracay — NE Amihan + SW Habagat seasons
+}
