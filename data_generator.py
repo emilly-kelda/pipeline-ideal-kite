@@ -353,7 +353,7 @@ for i, name in enumerate(RIDER_NAMES):
         "weight":              messy_weight(weight_kg),
         "skill_level":         random.choice(SKILL_VARIANTS[skill]),
         "preferred_style":     random.choice(STYLE_VARIANTS[style]),
-        "home_location_id":    assigned_loc,
+        "location_id":         assigned_loc,
         "budget":              messy_budget(budget_usd),
         "existing_kite_sizes": messy_existing_kites(existing_sizes),
     })
