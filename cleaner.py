@@ -555,12 +555,12 @@ def clean_rider_profiles(path):
     df["existing_sizes"] = df["existing_kite_sizes"].apply(parse_existing_sizes)
 
     # ── 6. Cross-table FK validation ──────────────────────────────────────
-    # Check every home_location_id actually exists in wind data.
+    # Check every location_id actually exists in wind data.
     # Rows with invalid IDs like LOC99 get nulled and flagged.
-    df["home_location_id"] = df["home_location_id"].apply(
+    df["location_id"] = df["location_id"].apply(
         lambda loc: loc if loc in VALID_LOCATION_IDS else None
     )
-    audit["rider_orphan_location"] = int(df["home_location_id"].isna().sum())
+    audit["rider_orphan_location"] = int(df["location_id"].isna().sum())
 
     # ── 7. Drop raw columns ────────────────────────────────────────────────
     df.drop(columns=["weight", "budget", "existing_kite_sizes"], inplace=True)
