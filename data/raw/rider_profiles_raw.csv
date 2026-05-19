@@ -1,4 +1,4 @@
-rider_id,name,weight,skill_level,preferred_style,home_location_id,budget,existing_kite_sizes
+rider_id,name,weight,skill_level,preferred_style,location_id,budget,existing_kite_sizes
 RDR01,Ana Lima,79.1 kg,expert,surf,LOC04,4000,
 RDR02,Bruno Costa,210.4,Advanced,freestyle,LOC07,$2500,7m
 RDR03,Carla Mendes,204.0 lbs,Advanced,Freestyle,LOC01,€1380,"15, 14"
