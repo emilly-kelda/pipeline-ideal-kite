@@ -1,4 +1,4 @@
- kite_id,brand,model,year,size_m2,wind_min_kn,wind_max_kn,price_usd
+kite_id,brand,model,year,size_m2,wind_min_kn,wind_max_kn,price_usd
 160,Ozone,Catalyst,2024,11.0,,26.0,1596
 265,Airush,Razor,2025,9.0,,30.0,1164
 255,Airush,Origin,2025,10.0,,28.0,2116

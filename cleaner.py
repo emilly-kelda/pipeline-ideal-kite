@@ -386,6 +386,126 @@ def clean_kite_catalog(path):
     df.to_csv(f"{CLEAN_DIR}/kite_catalog_clean.csv", index=False)
     return df
 
+def clean_wind_observations(path):
+    print("\n── Wind observations ────────────────────────────────")
+    df = pd.read_csv(path)
+    original_len = len(df)
+    print(f"   Loaded: {original_len} rows")
+
+    # ── 1. Location name normalization ─────────────────────────────────────
+    LOCATION_NAME_MAP = {
+        "cumbuco, brazil": "Cumbuco",       "cumbuco": "Cumbuco",
+        "jericoacoara, brazil": "Jericoacoara", "jeri": "Jericoacoara",
+        "jericoacoara": "Jericoacoara",
+        "tarifa, spain": "Tarifa",          "tarifa": "Tarifa",
+        "maui, hawaii": "Maui",             "maui": "Maui",
+        "maui hi": "Maui",
+        "cape town, south africa": "Cape Town", "cape town": "Cape Town",
+        "capetown": "Cape Town",
+        "cabarete, dominican rep.": "Cabarete", "cabarete": "Cabarete",
+        "dakhla, morocco": "Dakhla",        "dakhla": "Dakhla",
+        "ilha do guajiru, brazil": "Guajiru", "guajiru": "Guajiru",
+        "ilha guajiru": "Guajiru",
+        "lake garda, italy": "Lake Garda",  "garda": "Lake Garda",
+        "lago di garda": "Lake Garda",
+        "boracay, philippines": "Boracay",  "boracay": "Boracay",
+    }
+
+    CANONICAL_LOCATIONS = [
+        "Cumbuco", "Jericoacoara", "Tarifa", "Maui", "Cape Town",
+        "Cabarete", "Dakhla", "Guajiru", "Lake Garda", "Boracay",
+    ]
+
+    df["location_name"] = strip_and_lower(df["location_name"]).map(LOCATION_NAME_MAP)
+
+    unmatched = df["location_name"].isna()
+    original_names = pd.read_csv(path)["location_name"]
+    df.loc[unmatched, "location_name"] = original_names[unmatched].apply(
+        lambda x: fuzzy_normalize(str(x), CANONICAL_LOCATIONS, threshold=70)
+    )
+    audit["wind_location_unmatched"] = int(df["location_name"].isna().sum())
+
+    # ── 2. Date parsing ────────────────────────────────────────────────────
+    df["date"] = df["date"].apply(parse_date_flexible)
+    audit["wind_date_unparseable"] = int(df["date"].isna().sum())
+
+    # ── 3. Wind speed → knots ─────────────────────────────────────────────
+    # Your to_knots() function — unit normalization + conversion
+    UNIT_MAP = {
+        "km/h": "km/h", "kph": "km/h", "kmh": "km/h",
+        "m/s":  "m/s",  "ms":  "m/s",
+        "mph":  "mph",
+        "bf":   "beaufort", "beaufort": "beaufort",
+        "kt":   "knots", "kts": "knots", "knots": "knots",
+    }
+
+    CONVERSION_FACTORS = {
+        "km/h":  KMH_TO_KNOTS,
+        "m/s":   MS_TO_KNOTS,
+        "mph":   MPH_TO_KNOTS,
+        "knots": 1.0,
+    }
+
+    def to_knots(value_str, unit_str):
+        amount = extract_number(value_str)
+        if pd.isna(amount):
+            return np.nan
+        unit = UNIT_MAP.get(str(unit_str).strip().lower(), "unknown")
+        if unit == "beaufort":
+            b = int(np.clip(amount, 0, 12))
+            return float(BEAUFORT_TO_KNOTS[b])
+        factor = CONVERSION_FACTORS.get(unit)
+        if factor is None:
+            return np.nan
+        return round(amount * factor, 1)
+
+    df["wind_speed_kn"] = df.apply(
+        lambda row: to_knots(row["wind_speed"], row["wind_unit"]), axis=1
+    )
+
+    # ── 4. Sensor spike detection ──────────────────────────────────────────
+    bad_speed = df["wind_speed_kn"].lt(WIND_MIN_KITE) | df["wind_speed_kn"].gt(WIND_MAX_KITE)
+    audit["wind_speed_outliers"] = int(bad_speed.sum())
+    df.loc[bad_speed, "wind_speed_kn"] = np.nan
+
+    # ── 5. Gust validation ─────────────────────────────────────────────────
+    df["gust_kn"] = pd.to_numeric(df["gust_speed"], errors="coerce")
+
+    # Gust lower than sustained wind is physically impossible
+    bad_gust = df["gust_kn"].lt(df["wind_speed_kn"]).fillna(False)
+    audit["wind_bad_gusts"] = int(bad_gust.sum())
+    df.loc[bad_gust, "gust_kn"] = np.nan
+    audit["wind_gust_missing"] = int(df["gust_kn"].isna().sum())
+
+    # ── 6. Wind direction normalization ───────────────────────────────────
+    df["wind_direction_deg"] = df["wind_direction"].apply(normalize_direction)
+    audit["wind_direction_unparseable"] = int(df["wind_direction_deg"].isna().sum())
+
+    # ── 7. Near-duplicate detection ────────────────────────────────────────
+    # Standard dedup misses rows recorded twice by two loggers
+    # on the same day. Window-based dedup catches them.
+    df.sort_values(["location_id", "date"], inplace=True)
+    df.reset_index(drop=True, inplace=True)
+
+    same_loc  = df["location_id"].eq(df["location_id"].shift(1))
+    same_date = df["date"].eq(df["date"].shift(1))
+    near_dupe_mask = same_loc & same_date
+
+    audit["wind_near_dupes_dropped"] = int(near_dupe_mask.sum())
+    df = df[~near_dupe_mask].reset_index(drop=True)
+
+    # ── 8. Add month and year columns for analysis ─────────────────────────
+    df["month"] = df["date"].dt.month
+    df["year"]  = df["date"].dt.year
+
+    # ── 9. Drop raw columns ────────────────────────────────────────────────
+    df.drop(columns=["wind_speed", "wind_unit", "wind_direction", "gust_speed"],
+            inplace=True)
+
+    print(f"   Clean:  {len(df)} rows  ({original_len - len(df)} removed)")
+    df.to_csv(f"{CLEAN_DIR}/wind_observations_clean.csv", index=False)
+    return df
+
 # ── Rider profiles ────────────────────────────────────────────────────────────
 
 def clean_rider_profiles(path):
@@ -453,6 +573,7 @@ def clean_rider_profiles(path):
 
 if __name__ == "__main__":
     kite_df  = clean_kite_catalog(f"{RAW_DIR}/kite_catalog_raw.csv")
+    wind_df  = clean_wind_observations(f"{RAW_DIR}/wind_observations_raw.csv")
     rider_df = clean_rider_profiles(f"{RAW_DIR}/rider_profiles_raw.csv")
 
     print("\n" + "═" * 52)
@@ -462,3 +583,5 @@ if __name__ == "__main__":
         label = key.replace("_", " ")
         print(f"  {label:<38}  {val:>6}")
     print("═" * 52)
+    print("\nAll clean files written to data/clean/")
+    print("Next step → run transformer.py")

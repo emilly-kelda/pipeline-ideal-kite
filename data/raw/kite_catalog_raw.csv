@@ -1,4 +1,4 @@
- kite_id,brand,model,year,size_m2,wind_range_min,wind_range_max,price
+kite_id,brand,model,year,size_m2,wind_range_min,wind_range_max,price
 160,ozone,Catalyst,2024,11,,26,€1468.32
 265,AIRUSH,Razor,2025,9,,30,€1070.88
 255,airush,Origin,2025,10m²,,28,2116
