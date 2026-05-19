@@ -180,6 +180,68 @@ def parse_existing_sizes(text):
     return sorted(sizes)
 
 
+DATE_FORMATS = [
+    "%Y-%m-%d",  # 2024-03-15
+    "%d/%m/%Y",  # 15/03/2024
+    "%m/%d/%Y",  # 03/15/2024
+    "%d %b %Y",  # 15 Mar 2024
+    "%b %d %Y",  # Mar 15 2024
+]
+
+
+def parse_date_flexible(text):
+    """Try multiple date formats until one works.
+
+    %Y = 4-digit year
+    %m = month as number
+    %d = day as number
+    %b = abbreviated month name (Jan, Feb, Mar...)
+
+    Returns pandas NaT (Not a Time) if no format matches —
+    the datetime equivalent of NaN.
+    """
+    if pd.isna(text):
+        return pd.NaT
+
+    for fmt in DATE_FORMATS:
+        try:
+            return pd.to_datetime(str(text).strip(), format=fmt)
+        except ValueError:
+            continue
+    return pd.NaT
+
+
+def normalize_direction(text):
+    """Convert wind direction to degrees (0-360).
+
+    Accepts: "NE", "northeast", "45", "45°"
+    Returns: integer degrees or NaN
+    """
+    if pd.isna(text):
+        return np.nan
+
+    s = str(text).strip().lower().replace("°", "")
+
+    cardinal_map = {
+        "n": 0, "ne": 45, "e": 90, "se": 135,
+        "s": 180, "sw": 225, "w": 270, "nw": 315,
+        "north": 0, "northeast": 45, "east": 90,
+        "southeast": 135, "south": 180, "southwest": 225,
+        "west": 270, "northwest": 315,
+    }
+
+    if s in cardinal_map:
+        return cardinal_map[s]
+
+    try:
+        deg = float(s)
+        if 0 <= deg <= 360:
+            return int(deg)
+    except ValueError:
+        pass
+
+    return np.nan
+
 # ── Normalization maps ────────────────────────────────────────────────────────
 
 # LIMITATION: unrecognized variants get filled with a default value.
@@ -220,6 +282,109 @@ STYLE_MAP = {
 
 VALID_LOCATION_IDS = {f"LOC{i:02d}" for i in range(1, 11)}
 
+# ── Kite catalog normalization maps ───────────────────────────────────────────
+
+CANONICAL_BRANDS = [
+    "Duotone", "Cabrinha", "North", "F-One",
+    "Core", "Ozone", "Naish", "Slingshot", "Airush", "Reedin",
+]
+
+BRAND_MAP = {
+    "duotone":        "Duotone",
+    "duo-tone":       "Duotone",
+    "duotone sports": "Duotone",
+    "cabrinha":       "Cabrinha",
+    "cabrinha kites": "Cabrinha",
+    "north":          "North",
+    "north kiteboarding": "North",
+    "north kb":       "North",
+    "f-one":          "F-One",
+    "f one":          "F-One",
+    "fone":           "F-One",
+    "f_one":          "F-One",
+    "core":           "Core",
+    "core kiteboarding": "Core",
+    "ozone":          "Ozone",
+    "ozone kites":    "Ozone",
+    "naish":          "Naish",
+    "naish kiteboarding": "Naish",
+    "slingshot":      "Slingshot",
+    "airush":         "Airush",
+    "reedin":         "Reedin",
+    "reedin kiteboarding": "Reedin",
+}
+
+def clean_kite_catalog(path):
+    print("\n── Kite catalog ─────────────────────────────────────")
+    df = pd.read_csv(path)
+    original_len = len(df)
+    print(f"   Loaded: {original_len} rows")
+
+    # ── 1. Brand normalization ─────────────────────────────────────────────
+    # Hybrid: static map for known variants, fuzzy matching for anything else
+    df["brand"] = strip_and_lower(df["brand"]).map(BRAND_MAP)
+
+    unmatched = df["brand"].isna()
+    original_brands = pd.read_csv(path)["brand"]
+    df.loc[unmatched, "brand"] = original_brands[unmatched].apply(
+        lambda x: fuzzy_normalize(str(x), CANONICAL_BRANDS, threshold=70)
+    )
+    audit["kite_brand_unmatched"] = int(df["brand"].isna().sum())
+
+    # ── 2. Size parsing ────────────────────────────────────────────────────
+    # extract_number() strips "m", "m²", "sqm" and returns the float
+    df["size_m2"] = df["size_m2"].apply(extract_number)
+
+    # Reject physically impossible sizes
+    invalid_size = df["size_m2"].lt(KITE_SIZE_MIN) | df["size_m2"].gt(KITE_SIZE_MAX)
+    audit["kite_size_invalid"] = int(invalid_size.sum())
+    df.loc[invalid_size, "size_m2"] = np.nan
+
+    # ── 3. Wind range parsing ──────────────────────────────────────────────
+    # Your to_knots() logic — extract number then convert unit
+    def parse_wind_value(text):
+        """Extract wind speed and convert to knots."""
+        if pd.isna(text):
+            return np.nan
+        s = str(text).strip().lower()
+        amount = extract_number(s)
+        if pd.isna(amount):
+            return np.nan
+        if "km" in s:
+            return round(amount * KMH_TO_KNOTS, 1)
+        return round(amount, 1)  # assume knots
+
+    df["wind_min_kn"] = df["wind_range_min"].apply(parse_wind_value)
+    df["wind_max_kn"] = df["wind_range_max"].apply(parse_wind_value)
+
+    # Flag impossible ranges — min >= max
+    bad_range = df["wind_min_kn"].ge(df["wind_max_kn"]).fillna(False)
+    audit["kite_bad_wind_range"] = int(bad_range.sum())
+    df.loc[bad_range, ["wind_min_kn", "wind_max_kn"]] = np.nan
+
+    audit["kite_wind_min_missing"] = int(df["wind_min_kn"].isna().sum())
+
+    # ── 4. Price parsing ───────────────────────────────────────────────────
+    df["price_usd"] = df["price"].apply(parse_budget_usd)
+    audit["kite_price_missing"] = int(df["price_usd"].isna().sum())
+
+    # ── 5. Drop duplicates ─────────────────────────────────────────────────
+    # A duplicate = same brand + model + size + year
+    # keep="first" keeps the first occurrence, drops the rest
+    before_dedup = len(df)
+    df.drop_duplicates(
+        subset=["brand", "model", "size_m2", "year"],
+        keep="first",
+        inplace=True
+    )
+    audit["kite_dupes_dropped"] = before_dedup - len(df)
+
+    # ── 6. Drop raw columns ────────────────────────────────────────────────
+    df.drop(columns=["wind_range_min", "wind_range_max", "price"], inplace=True)
+
+    print(f"   Clean:  {len(df)} rows  ({original_len - len(df)} removed)")
+    df.to_csv(f"{CLEAN_DIR}/kite_catalog_clean.csv", index=False)
+    return df
 
 # ── Rider profiles ────────────────────────────────────────────────────────────
 
@@ -284,10 +449,10 @@ def clean_rider_profiles(path):
     df.to_csv(f"{CLEAN_DIR}/rider_profiles_clean.csv", index=False)
     return df
 
-
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
+    kite_df  = clean_kite_catalog(f"{RAW_DIR}/kite_catalog_raw.csv")
     rider_df = clean_rider_profiles(f"{RAW_DIR}/rider_profiles_raw.csv")
 
     print("\n" + "═" * 52)
