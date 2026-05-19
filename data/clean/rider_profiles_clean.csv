@@ -1,4 +1,4 @@
-rider_id,name,skill_level,preferred_style,home_location_id,weight_kg,budget_usd,existing_sizes
+rider_id,name,skill_level,preferred_style,location_id,weight_kg,budget_usd,existing_sizes
 RDR01,Ana Lima,advanced,freeride,LOC04,79.1,4000,[]
 RDR02,Bruno Costa,advanced,freestyle,LOC07,95.4,2500,[7.0]
 RDR03,Carla Mendes,advanced,freestyle,LOC01,92.5,1500,"[14.0, 15.0]"
