@@ -1,20 +1,20 @@
-rider_id,rider_name,kite1_brand,kite1_model,kite1_size,kite1_price,kite2_brand,kite2_model,kite2_size,kite2_price,combined_score
-RDR01,Ana Lima,Reedin,Hyper Model,12.0,1928,Duotone,Dice,10.0,1234,0.804
-RDR02,Bruno Costa,Duotone,Dice,10.0,1234,F-One,Breeze,8.0,1323,0.815
-RDR03,Carla Mendes,Slingshot,Crisis,12.0,959,Duotone,Dice,10.0,1234,0.804
-RDR04,Diego Souza,Reedin,Expert Model,15.0,1308,Airush,Ultra,17.0,1251,0.814
-RDR05,Elena Faria,F-One,Breeze,8.0,1323,Duotone,Dice,10.0,1234,0.754
-RDR06,Felipe Rocha,Reedin,Hyper Model,12.0,1928,Duotone,Dice,10.0,1234,0.734
-RDR07,Gabriela Nunes,Duotone,Dice,10.0,1234,Reedin,Hyper Model,12.0,1928,0.772
-RDR09,Isabel Martins,Slingshot,Code,15.0,1825,Airush,Ultra,17.0,1251,0.813
-RDR10,João Pires,Airush,Razor,9.0,1164,Duotone,Neo SLS,7.0,1635,0.724
-RDR11,Karina Silva,Duotone,Juice,9.0,1688,Reedin,Hyper Model,11.0,1867,0.788
-RDR12,Lucas Ferreira,Duotone,Juice,9.0,1688,Slingshot,Code,15.0,1825,0.78
-RDR13,Mariana Gomes,Airush,Ultra,17.0,1251,Slingshot,Code,15.0,1825,0.73
-RDR14,Nicolas Teixeira,Duotone,Neo SLS,7.0,1635,Duotone,Juice,9.0,1688,0.788
-RDR15,Olivia Santos,North,Carve,7.0,1267,Ozone,Edge,9.0,1390,0.841
-RDR16,Pedro Dias,North,Reach,7.0,2160,Airush,Razor,9.0,1164,0.722
-RDR17,Rafaela Cruz,Duotone,Juice,9.0,1688,Reedin,Hyper Model,11.0,1867,0.837
-RDR18,Samuel Barros,Ozone,Reo,13.0,1593,Slingshot,Code,15.0,1825,0.863
-RDR19,Thais Oliveira,Airush,Origin,10.0,2116,Reedin,Hyper Model,12.0,1928,0.878
-RDR20,Victor Cardoso,Ozone,Edge,9.0,1390,F-One,Breeze,11.0,2079,0.865
+rider_id,rider_name,quiver_size,kite1_brand,kite1_model,kite1_size,kite1_price,kite2_brand,kite2_model,kite2_size,kite2_price,combined_score
+RDR01,Ana Lima,1,Reedin,Hyper Model,12.0,1928,,,,,0.826
+RDR02,Bruno Costa,1,Duotone,Juice,9.0,1688,,,,,0.837
+RDR03,Carla Mendes,1,Slingshot,Crisis,12.0,959,,,,,0.811
+RDR04,Diego Souza,1,Core,XR7,15.0,1334,,,,,0.716
+RDR05,Elena Faria,1,Duotone,Juice,9.0,1688,,,,,0.772
+RDR06,Felipe Rocha,1,Reedin,Hyper Model,12.0,1928,,,,,0.76
+RDR07,Gabriela Nunes,1,Duotone,Dice,10.0,1234,,,,,0.778
+RDR09,Isabel Martins,1,F-One,Revolt,15.0,1641,,,,,0.807
+RDR10,João Pires,1,Naish,Slash,8.0,1758,,,,,0.721
+RDR11,Karina Silva,1,Duotone,Juice,9.0,1688,,,,,0.81
+RDR12,Lucas Ferreira,1,Duotone,Juice,9.0,1688,,,,,0.786
+RDR13,Mariana Gomes,1,Duotone,Juice,17.0,1717,,,,,0.689
+RDR14,Nicolas Teixeira,1,Duotone,Neo SLS,7.0,1635,,,,,0.8
+RDR15,Olivia Santos,1,North,Carve,7.0,1267,,,,,0.848
+RDR16,Pedro Dias,2,Duotone,Neo SLS,7.0,1635,Duotone,Juice,9.0,1688.0,0.665
+RDR17,Rafaela Cruz,1,Duotone,Dice,10.0,1234,,,,,0.855
+RDR18,Samuel Barros,1,North,Orbit,13.0,1583,,,,,0.795
+RDR19,Thais Oliveira,1,Reedin,Hyper Model,12.0,1928,,,,,0.868
+RDR20,Victor Cardoso,1,Airush,Razor,9.0,1164,,,,,0.892

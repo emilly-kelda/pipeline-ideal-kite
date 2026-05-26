@@ -166,6 +166,19 @@ def run_transformer():
     print(f"   Wind:    {len(wind)} rows")
     print(f"   Riders:  {len(riders)} rows")
 
+    WIND_MIN_ESTIMATES = {
+        5: 20, 6: 18, 7: 16, 8: 14, 9: 12, 10: 11,
+        11: 10, 12: 9, 13: 8, 14: 7, 15: 6, 17: 5
+    }
+
+    kites["wind_min_estimated"] = False
+    missing_mask = kites["wind_min_kn"].isna()
+    kites.loc[missing_mask, "wind_min_kn"] = kites.loc[missing_mask, "size_m2"].map(WIND_MIN_ESTIMATES)
+    kites.loc[missing_mask & kites["wind_min_kn"].notna(), "wind_min_estimated"] = True
+
+    n_estimated = kites["wind_min_estimated"].sum()
+    print(f"   wind_min_kn estimated for {n_estimated} kite(s) using size lookup")
+
     results = []
 
     for _, rider in riders.iterrows():

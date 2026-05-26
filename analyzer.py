@@ -90,35 +90,79 @@ def print_recommendation(rider_name, kite1, kite2):
         print(f"  Overall          {safe_bar(kite.overall_score)}")
 
 
-def save_chart(rider_name, kite1, kite2):
-    """Save a bar chart comparing the two recommended kites."""
-    categories = ["Coverage", "Skill", "Weight", "Direction", "Gust", "Overall"]
-    scores1    = [kite1.coverage_score, kite1.skill_score, kite1.weight_score,
-                  kite1.direction_score, kite1.gust_score, kite1.overall_score]
-    scores2    = [kite2.coverage_score, kite2.skill_score, kite2.weight_score,
-                  kite2.direction_score, kite2.gust_score, kite2.overall_score]
+def save_chart(rider_name, kite1, kite2=None):
+    """Save a bar chart for one or two kites.
 
-    x     = range(len(categories))
-    width = 0.35
+    Single-kite path (kite2=None): one bar group, no combined column.
+    Two-kite path: three bar groups with a Quiver Combined column.
+    """
+    import math
 
-    fig, ax = plt.subplots(figsize=(10, 5))
-    ax.bar([i - width/2 for i in x], scores1, width,
-           label=f"{kite1.brand} {kite1.size_m2}m²", color="#2196F3")
-    ax.bar([i + width/2 for i in x], scores2, width,
-           label=f"{kite2.brand} {kite2.size_m2}m²", color="#FF9800")
+    def _v(score):
+        return 0.0 if score is None or (isinstance(score, float) and math.isnan(score)) else score
+
+    categories = ["Coverage", "Skill", "Weight", "Gust", "Overall"]
+    scores1    = [_v(kite1.coverage_score), _v(kite1.skill_score), _v(kite1.weight_score),
+                  _v(kite1.gust_score), _v(kite1.overall_score)]
+
+    x   = range(len(categories))
+    fig, ax = plt.subplots(figsize=(11, 5))
+
+    if kite2 is None:
+        width = 0.5
+        ax.bar(list(x), scores1, width,
+               label=f"{kite1.brand} {kite1.model} {kite1.size_m2}m²", color="#2196F3")
+        ax.set_title(f"Single-Kite Recommendation — {rider_name}", fontsize=11)
+        ncol = 1
+    else:
+        scores2 = [_v(kite2.coverage_score), _v(kite2.skill_score), _v(kite2.weight_score),
+                   _v(kite2.gust_score), _v(kite2.overall_score)]
+
+        def _combined(s1, s2, additive):
+            return 1 - (1 - s1) * (1 - s2) if additive else max(s1, s2)
+
+        scores_combined = [
+            _combined(scores1[0], scores2[0], True),   # coverage
+            _combined(scores1[1], scores2[1], True),   # skill
+            _combined(scores1[2], scores2[2], False),  # weight
+            _combined(scores1[3], scores2[3], False),  # gust
+            _combined(scores1[4], scores2[4], False),  # overall
+        ]
+
+        width = 0.25
+        ax.bar([i - width for i in x], scores1,         width,
+               label=f"{kite1.brand} {kite1.size_m2}m²", color="#2196F3")
+        ax.bar([i         for i in x], scores2,         width,
+               label=f"{kite2.brand} {kite2.size_m2}m²", color="#FF9800")
+        ax.bar([i + width for i in x], scores_combined, width,
+               label="Quiver Combined", color="#4CAF50")
+        ax.set_title(
+            f"Quiver Recommendation — {rider_name}\n"
+            "Combined = what the pair covers together",
+            fontsize=11,
+        )
+        ncol = 3
 
     ax.set_ylabel("Score")
-    ax.set_title(f"Quiver Recommendation — {rider_name}")
     ax.set_xticks(list(x))
     ax.set_xticklabels(categories)
     ax.set_ylim(0, 1)
-    ax.legend()
+    ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.12), ncol=ncol)
     ax.grid(axis="y", alpha=0.3)
 
     filename = rider_name.replace(" ", "_") + ".png"
+    plt.subplots_adjust(bottom=0.2)
     plt.tight_layout()
     plt.savefig(f"{CHARTS_DIR}/{filename}")
     plt.close()
+
+
+def find_best_single(rider_df):
+    """Return the single kite with the highest overall_score."""
+    kites = rider_df.dropna(subset=["overall_score"])
+    if kites.empty:
+        return None
+    return kites.loc[kites["overall_score"].idxmax()]
 
 
 def run_analyzer():
@@ -132,10 +176,36 @@ def run_analyzer():
     for rider_id in riders:
         rider_df   = df[df["rider_id"] == rider_id].copy()
         rider_name = rider_df["rider_name"].iloc[0]
-        budget     = rider_df["price_usd"].sum()  # placeholder
 
-        # Get actual budget from first row
-        budget = rider_df.iloc[0]["price_usd"] * 3  # rough estimate
+        best_single = find_best_single(rider_df)
+
+        if best_single is None:
+            print(f"  [!] No valid kite found for {rider_name}")
+            continue
+
+        if best_single["coverage_score"] >= 0.80:
+            kite = best_single
+            print(
+                f"\n  One kite is enough — "
+                f"{kite['brand']} {kite['model']} {kite['size_m2']}m² "
+                f"covers {kite['coverage_score']:.0%} of wind days at this location"
+            )
+            save_chart(rider_name, kite)
+            results.append({
+                "rider_id":    rider_id,
+                "rider_name":  rider_name,
+                "quiver_size": 1,
+                "kite1_brand": kite["brand"],
+                "kite1_model": kite["model"],
+                "kite1_size":  kite["size_m2"],
+                "kite1_price": kite["price_usd"],
+                "kite2_brand": None,
+                "kite2_model": None,
+                "kite2_size":  None,
+                "kite2_price": None,
+                "combined_score": round(kite["overall_score"], 3),
+            })
+            continue
 
         best = find_best_quiver(rider_df, budget=999999)  # no budget filter for now
 
@@ -150,6 +220,7 @@ def run_analyzer():
         results.append({
             "rider_id":    rider_id,
             "rider_name":  rider_name,
+            "quiver_size": 2,
             "kite1_brand": kite1.brand,
             "kite1_model": kite1.model,
             "kite1_size":  kite1.size_m2,
