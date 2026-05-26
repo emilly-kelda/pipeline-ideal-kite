@@ -1,0 +1,20 @@
+rider_id,rider_name,kite1_brand,kite1_model,kite1_size,kite1_price,kite2_brand,kite2_model,kite2_size,kite2_price,combined_score
+RDR01,Ana Lima,Reedin,Hyper Model,12.0,1928,Reedin,Hyper Model,11.0,1867,0.818
+RDR02,Bruno Costa,Duotone,Juice,9.0,1688,Duotone,Dice,10.0,1234,0.829
+RDR03,Carla Mendes,Slingshot,Crisis,12.0,959,Duotone,Evo,11.0,1390,0.808
+RDR04,Diego Souza,Reedin,Expert Model,15.0,1308,Airush,Ultra,17.0,1251,0.814
+RDR05,Elena Faria,Duotone,Juice,9.0,1688,F-One,Breeze,8.0,1323,0.764
+RDR06,Felipe Rocha,Reedin,Hyper Model,12.0,1928,Ozone,Catalyst,11.0,1596,0.746
+RDR07,Gabriela Nunes,Duotone,Dice,10.0,1234,Reedin,Hyper Model,11.0,1867,0.775
+RDR09,Isabel Martins,Slingshot,Code,15.0,1825,Airush,Ultra,17.0,1251,0.813
+RDR10,João Pires,Naish,Slash,8.0,1758,Airush,Razor,9.0,1164,0.748
+RDR11,Karina Silva,Duotone,Juice,9.0,1688,Duotone,Dice,10.0,1234,0.802
+RDR12,Lucas Ferreira,Duotone,Juice,9.0,1688,Slingshot,Code,15.0,1825,0.78
+RDR13,Mariana Gomes,Airush,Ultra,17.0,1251,Slingshot,Code,15.0,1825,0.73
+RDR14,Nicolas Teixeira,Duotone,Neo SLS,7.0,1635,F-One,Breeze,8.0,1323,0.794
+RDR15,Olivia Santos,North,Carve,7.0,1267,F-One,Breeze,8.0,1323,0.845
+RDR16,Pedro Dias,North,Reach,7.0,2160,Airush,Razor,9.0,1164,0.722
+RDR17,Rafaela Cruz,Duotone,Dice,10.0,1234,Duotone,Juice,9.0,1688,0.85
+RDR18,Samuel Barros,Ozone,Reo,13.0,1593,Slingshot,Code,15.0,1825,0.863
+RDR19,Thais Oliveira,Airush,Origin,10.0,2116,Reedin,Hyper Model,12.0,1928,0.878
+RDR20,Victor Cardoso,Ozone,Edge,9.0,1390,Ozone,Chrono,10.0,994,0.881
