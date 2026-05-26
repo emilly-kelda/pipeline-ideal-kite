@@ -1,6 +1,8 @@
 # pipeline-ideal-kite
 
-> **Pipeline de dados em Python que analisa ventos históricos de 10 destinos de kitesurf e recomenda as melhores pipas para cada rider — considerando peso, habilidade, estilo de surf, direção do vento e orçamento.**
+> **Python data pipeline that analyses historical winds from 10 kitesurfing destinations and recommends the best kites for each rider — considering weight, skill level, riding style, wind direction, and budget.**
+
+> 🇧🇷 **Pipeline de dados em Python que analisa ventos históricos de 10 destinos de kitesurf e recomenda as melhores pipas para cada rider — considerando peso, habilidade, estilo de surf, direção do vento e orçamento.**
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![pandas](https://img.shields.io/badge/pandas-3.0-green)
@@ -18,6 +20,14 @@ The wrong size for your weight in your local wind conditions means you either ca
 I worked at a kitesurfing school. I saw this problem up close — students renting the wrong gear, instructors making judgment calls without data, equipment decisions based on reputation rather than numbers.
 
 This project uses data to answer the question properly.
+
+> 🇧🇷 Escolher as pipas certas é mais difícil do que parece.
+>
+> O tamanho errado para o seu peso nas condições de vento locais significa que você não consegue levantar — ou é arremessado de forma perigosa. A maioria dos riders depende de intuição, YouTube ou conselho de amigos. Nada disso leva em conta o que o vento realmente faz no seu spot específico, ao longo de toda a temporada.
+>
+> Trabalhei numa escola de kitesurf. Vi esse problema de perto — alunos alugando equipamentos errados, instrutores tomando decisões sem dados, escolhas de equipamento baseadas em reputação em vez de números.
+>
+> Este projeto usa dados para responder à pergunta de forma adequada.
 
 ---
 
@@ -171,9 +181,13 @@ CV = std/mean gives fair relative comparison across locations with different ave
 
 ## About
 
-Built by **Emilly Kelda** — Applied AI undergraduate at PUCPR, former construction technician, real estate agent, and kitesurfing school staff.
+Built by **Emilly Kelda** — Applied AI undergraduate at PUCPR, former construction supervision intern, real estate agent, and kitesurfing school staff.
 
 Open to data engineering, data analyst, and AI roles.
+
+> 🇧🇷 Desenvolvido por **Emilly Kelda** — graduanda em IA Aplicada na PUCPR, ex-estagiária de supervisão de obras, corretora de imóveis e funcionária de escola de kitesurf.
+>
+> Aberta a oportunidades em engenharia de dados, análise de dados e IA.
 
 📍 Goiânia, Brazil
 🔗 [linkedin.com/in/emillyc](https://linkedin.com/in/emillyc)
