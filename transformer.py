@@ -16,6 +16,7 @@ Each row = one rider + one kite, with:
     overall_score     weighted combination of all five
 """
 
+import ast
 import numpy as np
 import pandas as pd
 
@@ -228,13 +229,20 @@ def run_transformer():
         ref_wind, mode_band = mode_band_midpoint(loc_wind)
         print(f"   {rider['name']} ({loc_id}): mode wind band {mode_band} kn → ref {ref_wind} kn")
 
+        # Parse existing_sizes once per rider (it's a string in the CSV)
+        raw_existing = rider["existing_sizes"]
+        existing = ast.literal_eval(raw_existing) if isinstance(raw_existing, str) else raw_existing
+
+        if rider["name"] == "Diego Souza":
+            print(f"   [DEBUG] Diego existing_sizes: raw={raw_existing!r} ({type(raw_existing).__name__})"
+                  f" → parsed={existing} ({type(existing).__name__})")
+            skipped = [k["size_m2"] for _, k in kites.iterrows() if k["size_m2"] in existing]
+            print(f"   [DEBUG] Diego skipping kite sizes: {skipped}")
+
         # Score every kite against this rider
         for _, kite in kites.iterrows():
 
             # Skip kites the rider already owns
-            existing = rider["existing_sizes"]
-            if isinstance(existing, str):
-                existing = eval(existing)
             if kite["size_m2"] in existing:
                 continue
 

@@ -188,6 +188,8 @@ def run_analyzer():
             kite = best_single
             print_recommendation("✅ One kite is enough", kite)
             print(f"\n  Covers {kite['coverage_score']:.0%} of wind days at your location.")
+            if pd.notna(kite["skill_score"]) and kite["skill_score"] < 0.50:
+                print("  ⚠️  Skill mismatch — this location may be challenging for your current level. Consider a lighter-wind spot first.")
             save_chart(rider_name, kite)
             results.append({
                 "rider_id":    rider_id,
@@ -223,6 +225,9 @@ def run_analyzer():
             continue
 
         print_recommendation(rider_name, *selected)
+
+        if pd.notna(selected[0]["skill_score"]) and selected[0]["skill_score"] < 0.50:
+            print("  ⚠️  Skill mismatch — this location may be challenging for your current level. Consider a lighter-wind spot first.")
 
         kite1 = selected[0]
         kite2 = selected[1] if len(selected) >= 2 else None
