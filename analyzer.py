@@ -48,7 +48,7 @@ def find_best_quiver(rider_df, budget):
     # itertools.combinations generates all possible pairs without repetition
     for k1, k2 in itertools.combinations(kites.itertuples(), 2):
         # Skip pairs with same size — no complementary coverage
-        if k1.size_m2 == k2.size_m2:
+        if abs(k1.size_m2 - k2.size_m2) < 2:
             continue
 
         # Skip pairs that exceed budget
