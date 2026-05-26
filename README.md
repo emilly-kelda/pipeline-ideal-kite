@@ -13,19 +13,25 @@
 
 ## The problem
 
-Choosing the right kite quiver is harder than it looks.
+Choosing the right kite for your weight and local wind is not a preference — it's a safety decision.
 
-The wrong size for your weight in your local wind conditions means you either can't get up — or you get launched dangerously. Most riders rely on gut feeling, YouTube, or a friend's advice. None of that accounts for what the wind actually does at your specific spot, across the entire season.
+Using too large a kite for the wind conditions or your experience level is extremely dangerous. By far the most common mistake is launching the wrong sized kite for the wind conditions. If overpowered, riders can be lofted and carried significant distances downwind, sometimes impacting solid objects with injury or death resulting.
 
-I worked at a kitesurfing school. I saw this problem up close — students renting the wrong gear, instructors making judgment calls without data, equipment decisions based on reputation rather than numbers.
+The injury rate for kitesurfing is estimated at 7.0 injuries per 1,000 hours of practice — a number that drops significantly with proper gear selection and instruction.
+
+Most riders still rely on gut feeling, static size charts, or a friend's advice. None of that accounts for what the wind actually does at a specific spot across an entire season.
+
+I worked at a kitesurfing school. I saw this problem up close — students on the wrong gear, instructors making judgment calls without data, equipment decisions based on reputation rather than numbers.
 
 This project uses data to answer the question properly.
 
-> 🇧🇷 Escolher as pipas certas é mais difícil do que parece.
+> 🇧🇷 Escolher a pipa certa para o seu peso e o vento local não é uma preferência — é uma decisão de segurança.
 >
-> O tamanho errado para o seu peso nas condições de vento locais significa que você não consegue levantar — ou é arremessado de forma perigosa. A maioria dos riders depende de intuição, YouTube ou conselho de amigos. Nada disso leva em conta o que o vento realmente faz no seu spot específico, ao longo de toda a temporada.
+> Usar uma pipa grande demais para as condições ou para o seu nível de experiência é extremamente perigoso. O erro mais comum é lançar a pipa errada para as condições de vento. Se sobrecarregado, o rider pode ser arremessado e carregado por distâncias consideráveis, às vezes colidindo com objetos sólidos com lesões graves ou fatais.
 >
-> Trabalhei numa escola de kitesurf. Vi esse problema de perto — alunos alugando equipamentos errados, instrutores tomando decisões sem dados, escolhas de equipamento baseadas em reputação em vez de números.
+> A maioria dos riders ainda depende de intuição, tabelas estáticas ou conselhos de amigos. Nada disso leva em conta o que o vento realmente faz em um spot específico ao longo de toda a temporada.
+>
+> Trabalhei numa escola de kitesurf. Vi esse problema de perto — alunos com equipamento errado, instrutores tomando decisões sem dados, escolhas baseadas em reputação em vez de números.
 >
 > Este projeto usa dados para responder à pergunta de forma adequada.
 
