@@ -97,21 +97,51 @@ def skill_score(wind_df, kite, rider):
     return round(inside.sum() / len(valid), 3)
 
 
-def weight_score(wind_df, kite, rider):
-    """How well kite size matches rider weight at local average wind.
+def mode_band_midpoint(wind_df):
+    """Return the midpoint of the most common 5-knot wind band.
 
-    Formula: ideal_size = (weight_kg / avg_wind_kn) * 2.2
+    For locations with session data, uses only the most common session
+    (most rows) so bimodal locations aren't averaged across both windows.
+    Bands: 0-5, 5-10, 10-15, 15-20, 20-25, 25-30, 30-35, 35+
+    The 35+ band uses a midpoint of 37.5 kn.
+    Returns (midpoint, band_label) or (NaN, None) if no data.
+    """
+    if "session" in wind_df.columns:
+        sessions = set(wind_df["session"].dropna().unique())
+        if "morning" in sessions and "afternoon" in sessions:
+            wind_df = wind_df[wind_df["session"] == "afternoon"]
+
+    valid = wind_df["wind_speed_kn"].dropna()
+    if valid.empty:
+        return np.nan, None
+
+    bins   = [0, 5, 10, 15, 20, 25, 30, 35, np.inf]
+    labels = ["0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35", "35+"]
+    banded = pd.cut(valid, bins=bins, labels=labels, right=False)
+    mode_band = banded.value_counts().idxmax()
+
+    midpoints = {
+        "0-5": 2.5, "5-10": 7.5, "10-15": 12.5, "15-20": 17.5,
+        "20-25": 22.5, "25-30": 27.5, "30-35": 32.5, "35+": 37.5,
+    }
+    return midpoints[mode_band], mode_band
+
+
+def weight_score(kite, rider, ref_wind):
+    """How well kite size matches rider weight at the modal wind speed.
+
+    Formula: ideal_size = (weight_kg / ref_wind) * 2.2
     Score = 1 - abs(actual_size - ideal_size) / ideal_size
     Clamped to 0-1 range.
+    ref_wind is the midpoint of the most common 5-knot wind band.
     """
-    weight  = rider["weight_kg"]
-    size    = kite["size_m2"]
-    avg_wind = wind_df["wind_speed_kn"].dropna().mean()
+    weight = rider["weight_kg"]
+    size   = kite["size_m2"]
 
-    if pd.isna(weight) or pd.isna(size) or pd.isna(avg_wind) or avg_wind == 0:
+    if pd.isna(weight) or pd.isna(size) or pd.isna(ref_wind) or ref_wind == 0:
         return np.nan
 
-    ideal = (weight / avg_wind) * 2.2
+    ideal = (weight / ref_wind) * 2.2
     score = 1 - abs(size - ideal) / ideal
     return round(float(np.clip(score, 0, 1)), 3)
 
@@ -193,8 +223,10 @@ def run_transformer():
 
         # Calculate location-level scores once per rider
         # (direction and gust don't depend on the kite)
-        dir_score  = direction_score(loc_wind, loc_id)
+        dir_score      = direction_score(loc_wind, loc_id)
         gust_score_val = gust_score(loc_wind)
+        ref_wind, mode_band = mode_band_midpoint(loc_wind)
+        print(f"   {rider['name']} ({loc_id}): mode wind band {mode_band} kn → ref {ref_wind} kn")
 
         # Score every kite against this rider
         for _, kite in kites.iterrows():
@@ -213,7 +245,7 @@ def run_transformer():
 
             cov   = coverage_score(loc_wind, kite)
             skill = skill_score(loc_wind, kite, rider)
-            wgt   = weight_score(loc_wind, kite, rider)
+            wgt   = weight_score(kite, rider, ref_wind)
 
             # Overall score — weighted combination
             # Coverage and skill matter most, weight and direction secondary

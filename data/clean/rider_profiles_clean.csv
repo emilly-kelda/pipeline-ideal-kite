@@ -1,21 +1,21 @@
 rider_id,name,skill_level,preferred_style,location_id,weight_kg,budget_usd,existing_sizes
-RDR01,Ana Lima,advanced,freeride,LOC04,79.1,4000,[]
-RDR02,Bruno Costa,advanced,freestyle,LOC07,95.4,2500,[7.0]
-RDR03,Carla Mendes,advanced,freestyle,LOC01,92.5,1500,"[14.0, 15.0]"
-RDR04,Diego Souza,beginner,freestyle,LOC09,92.9,1500,[]
-RDR05,Elena Faria,intermediate,wave,LOC01,59.7,3500,"[7.0, 12.0]"
-RDR06,Felipe Rocha,intermediate,wave,LOC04,84.9,3000,[5.0]
-RDR07,Gabriela Nunes,intermediate,freestyle,LOC06,75.5,5000,[]
-RDR08,Henrique Alves,advanced,freestyle,,86.4,4000,[]
-RDR09,Isabel Martins,advanced,freeride,LOC09,90.0,2000,[14.0]
-RDR10,João Pires,advanced,big_air,LOC03,85.4,2500,[11.0]
-RDR11,Karina Silva,intermediate,freeride,LOC01,60.2,2500,[]
-RDR12,Lucas Ferreira,advanced,freeride,LOC07,144.2,3500,[10.0]
-RDR13,Mariana Gomes,beginner,freeride,LOC09,125.5,2500,"[6.0, 10.0]"
-RDR14,Nicolas Teixeira,advanced,freeride,LOC07,62.7,5000,[]
-RDR15,Olivia Santos,advanced,wave,LOC02,62.0,1500,[]
-RDR16,Pedro Dias,advanced,big_air,LOC05,83.1,3500,"[6.0, 8.0]"
-RDR17,Rafaela Cruz,advanced,freeride,LOC01,75.5,5000,[]
-RDR18,Samuel Barros,beginner,freeride,LOC10,92.9,3500,[14.0]
-RDR19,Thais Oliveira,advanced,freeride,LOC10,67.4,3000,"[7.0, 11.0]"
-RDR20,Victor Cardoso,advanced,wave,LOC08,75.9,5000,[]
+RDR01,Ana Lima,advanced,freeride,LOC08,58.3,5000,[]
+RDR02,Bruno Costa,advanced,freeride,LOC02,75.0,3000,[]
+RDR03,Carla Mendes,advanced,freeride,LOC01,58.3,4000,[]
+RDR04,Diego Souza,beginner,freeride,LOC02,76.4,3000,"[6.0, 8.0]"
+RDR05,Elena Faria,advanced,freeride,LOC10,65.9,2500,[6.0]
+RDR06,Felipe Rocha,intermediate,wave,LOC07,88.6,2500,[]
+RDR07,Gabriela Nunes,advanced,freeride,LOC03,94.8,4000,[11.0]
+RDR08,Henrique Alves,beginner,freeride,,76.2,2000,[15.0]
+RDR09,Isabel Martins,intermediate,wave,LOC09,55.8,3500,"[8.0, 9.0]"
+RDR10,João Pires,advanced,freeride,LOC05,66.7,4000,"[9.0, 11.0]"
+RDR11,Karina Silva,advanced,freeride,LOC01,69.5,2500,"[6.0, 17.0]"
+RDR12,Lucas Ferreira,advanced,freestyle,LOC05,75.7,3500,"[7.0, 8.0]"
+RDR13,Mariana Gomes,intermediate,wave,LOC01,122.8,2000,[14.0]
+RDR14,Nicolas Teixeira,advanced,freeride,LOC05,90.8,4000,"[8.0, 10.0]"
+RDR15,Olivia Santos,advanced,big_air,LOC01,98.0,1500,[]
+RDR16,Pedro Dias,intermediate,big_air,LOC07,93.8,1500,"[8.0, 17.0]"
+RDR17,Rafaela Cruz,intermediate,freestyle,LOC01,128.6,2500,[]
+RDR18,Samuel Barros,beginner,freeride,LOC04,124.8,2000,[]
+RDR19,Thais Oliveira,intermediate,freeride,LOC05,79.8,5000,[]
+RDR20,Victor Cardoso,advanced,freestyle,LOC08,98.1,5000,[]

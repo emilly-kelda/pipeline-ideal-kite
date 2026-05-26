@@ -149,16 +149,30 @@ print(f"[✓] kite_catalog_raw.csv — {len(kite_df)} rows")
 
 # ── Locations ─────────────────────────────────────────────────────────────────
 LOCATIONS = [
-    {"id": "LOC01", "name": "Cumbuco, Brazil",          "avg_kn": 18, "std": 4},
-    {"id": "LOC02", "name": "Jericoacoara, Brazil",      "avg_kn": 20, "std": 3},
-    {"id": "LOC03", "name": "Tarifa, Spain",             "avg_kn": 22, "std": 7},
-    {"id": "LOC04", "name": "Maui, Hawaii",              "avg_kn": 16, "std": 5},
-    {"id": "LOC05", "name": "Cape Town, South Africa",   "avg_kn": 24, "std": 8},
-    {"id": "LOC06", "name": "Cabarete, Dominican Rep.",  "avg_kn": 17, "std": 4},
-    {"id": "LOC07", "name": "Dakhla, Morocco",           "avg_kn": 22, "std": 5},
-    {"id": "LOC08", "name": "Ilha do Guajiru, Brazil",   "avg_kn": 19, "std": 3},
-    {"id": "LOC09", "name": "Lake Garda, Italy",         "avg_kn": 12, "std": 6},
-    {"id": "LOC10", "name": "Boracay, Philippines",      "avg_kn": 15, "std": 4},
+    {"id": "LOC01", "name": "Cumbuco, Brazil",
+     "sessions": [{"session": "allday",    "avg_kn": 20, "std": 3}]},
+    {"id": "LOC02", "name": "Jericoacoara, Brazil",
+     "sessions": [{"session": "allday",    "avg_kn": 22, "std": 3}]},
+    {"id": "LOC03", "name": "Tarifa, Spain",
+     "sessions": [{"session": "morning",   "avg_kn": 8,  "std": 4},
+                  {"session": "afternoon", "avg_kn": 20, "std": 5}]},
+    {"id": "LOC04", "name": "Maui, Hawaii",
+     "sessions": [{"session": "allday",    "avg_kn": 18, "std": 4}]},
+    {"id": "LOC05", "name": "Cape Town, South Africa",
+     "sessions": [{"session": "allday",    "avg_kn": 24, "std": 9}]},
+    {"id": "LOC06", "name": "Cabarete, Dominican Rep.",
+     "sessions": [{"session": "morning",   "avg_kn": 8,  "std": 3},
+                  {"session": "afternoon", "avg_kn": 20, "std": 4}]},
+    {"id": "LOC07", "name": "Dakhla, Morocco",
+     "sessions": [{"session": "morning",   "avg_kn": 12, "std": 4},
+                  {"session": "afternoon", "avg_kn": 22, "std": 4}]},
+    {"id": "LOC08", "name": "Ilha do Guajiru, Brazil",
+     "sessions": [{"session": "allday",    "avg_kn": 21, "std": 3}]},
+    {"id": "LOC09", "name": "Lake Garda, Italy",
+     "sessions": [{"session": "morning",   "avg_kn": 20, "std": 5},
+                  {"session": "afternoon", "avg_kn": 14, "std": 3}]},
+    {"id": "LOC10", "name": "Boracay, Philippines",
+     "sessions": [{"session": "allday",    "avg_kn": 16, "std": 4}]},
 ]
 
 LOCATION_NAME_VARIANTS = {
@@ -240,35 +254,37 @@ for loc in LOCATIONS:
         if loc["id"] in BLACKOUT_LOCATIONS and d in BLACKOUT_DATES:
             continue
 
-        wind_kn = max(0.0, round(float(np.random.normal(loc["avg_kn"], loc["std"])), 1))
+        for sess in loc["sessions"]:
+            if d in manual_block_dates:
+                wind_kn = float(round(sess["avg_kn"]))
+            else:
+                wind_kn = max(0.0, round(float(np.random.normal(sess["avg_kn"], sess["std"])), 1))
 
-        if d in manual_block_dates:
-            wind_kn = float(round(loc["avg_kn"]))
+            deg     = random.choice([0, 45, 90, 135, 180, 225, 270, 315])
+            gust_kn = round(wind_kn * random.uniform(1.1, 1.4), 1)
 
-        deg     = random.choice([0, 45, 90, 135, 180, 225, 270, 315])
-        gust_kn = round(wind_kn * random.uniform(1.1, 1.4), 1)
+            speed_str, unit = messy_wind_speed(wind_kn)
 
-        speed_str, unit = messy_wind_speed(wind_kn)
+            if random.random() < 0.08:
+                gust_kn = round(wind_kn * random.uniform(0.4, 0.9), 1)
 
-        if random.random() < 0.08:
-            gust_kn = round(wind_kn * random.uniform(0.4, 0.9), 1)
+            gust_out = None if random.random() < 0.05 else gust_kn
 
-        gust_out = None if random.random() < 0.05 else gust_kn
+            if random.random() < 0.03:
+                wind_kn   = random.choice([0.0, 150.0, -5.0])
+                speed_str = str(wind_kn)
+                unit      = "knots"
 
-        if random.random() < 0.03:
-            wind_kn   = random.choice([0.0, 150.0, -5.0])
-            speed_str = str(wind_kn)
-            unit      = "knots"
-
-        obs_rows.append({
-            "location_id":    loc["id"],
-            "location_name":  random.choice(LOCATION_NAME_VARIANTS[loc["name"]]),
-            "date":           messy_date(d),
-            "wind_speed":     speed_str,
-            "wind_unit":      unit,
-            "wind_direction": messy_direction(deg),
-            "gust_speed":     gust_out,
-        })
+            obs_rows.append({
+                "location_id":    loc["id"],
+                "location_name":  random.choice(LOCATION_NAME_VARIANTS[loc["name"]]),
+                "date":           messy_date(d),
+                "wind_speed":     speed_str,
+                "wind_unit":      unit,
+                "wind_direction": messy_direction(deg),
+                "gust_speed":     gust_out,
+                "session":        sess["session"],
+            })
 
 wind_df = pd.DataFrame(obs_rows)
 

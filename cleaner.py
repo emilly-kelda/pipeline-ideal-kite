@@ -484,12 +484,19 @@ def clean_wind_observations(path):
     # ── 7. Near-duplicate detection ────────────────────────────────────────
     # Standard dedup misses rows recorded twice by two loggers
     # on the same day. Window-based dedup catches them.
-    df.sort_values(["location_id", "date"], inplace=True)
+    # session is included in the sort so morning/afternoon rows are not
+    # treated as duplicates of each other.
+    sort_cols = ["location_id", "date", "session"] if "session" in df.columns else ["location_id", "date"]
+    df.sort_values(sort_cols, inplace=True)
     df.reset_index(drop=True, inplace=True)
 
     same_loc  = df["location_id"].eq(df["location_id"].shift(1))
     same_date = df["date"].eq(df["date"].shift(1))
-    near_dupe_mask = same_loc & same_date
+    if "session" in df.columns:
+        same_session   = df["session"].eq(df["session"].shift(1))
+        near_dupe_mask = same_loc & same_date & same_session
+    else:
+        near_dupe_mask = same_loc & same_date
 
     audit["wind_near_dupes_dropped"] = int(near_dupe_mask.sum())
     df = df[~near_dupe_mask].reset_index(drop=True)

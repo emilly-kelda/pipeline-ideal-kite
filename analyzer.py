@@ -65,7 +65,7 @@ def find_best_quiver(rider_df, budget):
     return best_pair
 
 
-def print_recommendation(rider_name, kite1, kite2):
+def print_recommendation(rider_name, *kites):
     """Print a formatted recommendation card for one rider."""
 
     def safe_bar(score):
@@ -78,7 +78,7 @@ def print_recommendation(rider_name, kite1, kite2):
     print(f"  {rider_name}")
     print(f"{'─' * 56}")
 
-    for kite in [kite1, kite2]:
+    for kite in kites:
         print(f"\n  {kite.brand} {kite.model} {kite.size_m2}m²  —  ${kite.price_usd:.0f}")
         print(f"  {'─' * 40}")
         print(f"  Wind coverage    {safe_bar(kite.coverage_score)}")
@@ -158,7 +158,7 @@ def save_chart(rider_name, kite1, kite2=None):
 
 
 def find_best_single(rider_df):
-    """Return the single kite with the highest overall_score."""
+    """Return the kite with the highest overall_score."""
     kites = rider_df.dropna(subset=["overall_score"])
     if kites.empty:
         return None
@@ -183,13 +183,11 @@ def run_analyzer():
             print(f"  [!] No valid kite found for {rider_name}")
             continue
 
+        # Single-kite path: best kite by overall_score covers ≥ 80% of wind days
         if best_single["coverage_score"] >= 0.80:
             kite = best_single
-            print(
-                f"\n  One kite is enough — "
-                f"{kite['brand']} {kite['model']} {kite['size_m2']}m² "
-                f"covers {kite['coverage_score']:.0%} of wind days at this location"
-            )
+            print_recommendation("✅ One kite is enough", kite)
+            print(f"\n  Covers {kite['coverage_score']:.0%} of wind days at your location.")
             save_chart(rider_name, kite)
             results.append({
                 "rider_id":    rider_id,
@@ -207,29 +205,45 @@ def run_analyzer():
             })
             continue
 
-        best = find_best_quiver(rider_df, budget=999999)  # no budget filter for now
+        # Multi-kite path: top 3 by overall_score, ≥ 2m² apart — no "one kite is enough"
+        ranked = (
+            rider_df
+            .dropna(subset=["overall_score"])
+            .sort_values("overall_score", ascending=False)
+        )
+        selected = []
+        for _, row in ranked.iterrows():
+            if all(abs(row["size_m2"] - s["size_m2"]) >= 2 for s in selected):
+                selected.append(row)
+            if len(selected) == 3:
+                break
 
-        if best is None:
-            print(f"  [!] No valid quiver found for {rider_name}")
+        if not selected:
+            print(f"  [!] No valid kites found for {rider_name}")
             continue
 
-        kite1, kite2 = best
-        print_recommendation(rider_name, kite1, kite2)
+        print_recommendation(rider_name, *selected)
+
+        kite1 = selected[0]
+        kite2 = selected[1] if len(selected) >= 2 else None
         save_chart(rider_name, kite1, kite2)
 
         results.append({
             "rider_id":    rider_id,
             "rider_name":  rider_name,
             "quiver_size": 2,
-            "kite1_brand": kite1.brand,
-            "kite1_model": kite1.model,
-            "kite1_size":  kite1.size_m2,
-            "kite1_price": kite1.price_usd,
-            "kite2_brand": kite2.brand,
-            "kite2_model": kite2.model,
-            "kite2_size":  kite2.size_m2,
-            "kite2_price": kite2.price_usd,
-            "combined_score": round((kite1.overall_score + kite2.overall_score) / 2, 3),
+            "kite1_brand": kite1["brand"],
+            "kite1_model": kite1["model"],
+            "kite1_size":  kite1["size_m2"],
+            "kite1_price": kite1["price_usd"],
+            "kite2_brand": kite2["brand"] if kite2 is not None else None,
+            "kite2_model": kite2["model"] if kite2 is not None else None,
+            "kite2_size":  kite2["size_m2"] if kite2 is not None else None,
+            "kite2_price": kite2["price_usd"] if kite2 is not None else None,
+            "combined_score": round(
+                (kite1["overall_score"] + (kite2["overall_score"] if kite2 is not None else 0)) /
+                (2 if kite2 is not None else 1), 3
+            ),
         })
 
     results_df = pd.DataFrame(results)

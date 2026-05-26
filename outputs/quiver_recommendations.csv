@@ -1,20 +1,20 @@
 rider_id,rider_name,quiver_size,kite1_brand,kite1_model,kite1_size,kite1_price,kite2_brand,kite2_model,kite2_size,kite2_price,combined_score
-RDR01,Ana Lima,1,Reedin,Hyper Model,12.0,1928,,,,,0.826
-RDR02,Bruno Costa,1,Duotone,Juice,9.0,1688,,,,,0.837
-RDR03,Carla Mendes,1,Slingshot,Crisis,12.0,959,,,,,0.811
-RDR04,Diego Souza,1,Core,XR7,15.0,1334,,,,,0.716
-RDR05,Elena Faria,1,Duotone,Juice,9.0,1688,,,,,0.772
-RDR06,Felipe Rocha,1,Reedin,Hyper Model,12.0,1928,,,,,0.76
-RDR07,Gabriela Nunes,1,Duotone,Dice,10.0,1234,,,,,0.778
-RDR09,Isabel Martins,1,F-One,Revolt,15.0,1641,,,,,0.807
-RDR10,João Pires,1,Naish,Slash,8.0,1758,,,,,0.721
-RDR11,Karina Silva,1,Duotone,Juice,9.0,1688,,,,,0.81
-RDR12,Lucas Ferreira,1,Duotone,Juice,9.0,1688,,,,,0.786
-RDR13,Mariana Gomes,1,Duotone,Juice,17.0,1717,,,,,0.689
-RDR14,Nicolas Teixeira,1,Duotone,Neo SLS,7.0,1635,,,,,0.8
-RDR15,Olivia Santos,1,North,Carve,7.0,1267,,,,,0.848
-RDR16,Pedro Dias,2,Duotone,Neo SLS,7.0,1635,Duotone,Juice,9.0,1688.0,0.665
-RDR17,Rafaela Cruz,1,Duotone,Dice,10.0,1234,,,,,0.855
-RDR18,Samuel Barros,1,North,Orbit,13.0,1583,,,,,0.795
-RDR19,Thais Oliveira,1,Reedin,Hyper Model,12.0,1928,,,,,0.868
-RDR20,Victor Cardoso,1,Airush,Razor,9.0,1164,,,,,0.892
+RDR01,Ana Lima,1,Duotone,Neo SLS,7.0,1635,,,,,0.814
+RDR02,Bruno Costa,1,Duotone,Neo SLS,7.0,1635,,,,,0.879
+RDR03,Carla Mendes,1,Airush,Razor,9.0,1164,,,,,0.848
+RDR04,Diego Souza,1,Duotone,Neo SLS,7.0,1635,,,,,0.659
+RDR05,Elena Faria,1,Duotone,Dice,10.0,1234,,,,,0.842
+RDR06,Felipe Rocha,2,Duotone,Juice,9.0,1688,Ozone,Catalyst,11.0,1596.0,0.667
+RDR07,Gabriela Nunes,2,Duotone,Dice,10.0,1234,Reedin,Hyper Model,12.0,1928.0,0.671
+RDR09,Isabel Martins,1,Duotone,Dice,10.0,1234,,,,,0.775
+RDR10,João Pires,2,Duotone,Neo SLS,7.0,1635,Slingshot,RPX,5.0,1127.0,0.654
+RDR11,Karina Silva,1,Airush,Razor,9.0,1164,,,,,0.888
+RDR12,Lucas Ferreira,2,Duotone,Juice,9.0,1688,F-One,Revolt,6.0,925.0,0.657
+RDR13,Mariana Gomes,1,Reedin,Hyper Model,12.0,1928,,,,,0.809
+RDR14,Nicolas Teixeira,2,Duotone,Juice,9.0,1688,Duotone,Neo SLS,7.0,1635.0,0.695
+RDR15,Olivia Santos,1,Slingshot,Crisis,12.0,959,,,,,0.729
+RDR16,Pedro Dias,2,Airush,Razor,9.0,1164,Cabrinha,Nitro,11.0,1019.0,0.643
+RDR17,Rafaela Cruz,1,Reedin,Hyper Model,12.0,1928,,,,,0.802
+RDR18,Samuel Barros,1,North,Neo,14.0,1869,,,,,0.7
+RDR19,Thais Oliveira,2,Naish,Slash,8.0,1758,Duotone,Dice,10.0,1234.0,0.635
+RDR20,Victor Cardoso,1,Airush,Razor,9.0,1164,,,,,0.875
